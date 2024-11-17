@@ -51,7 +51,7 @@ jobs:
           docker build -t my-frontend ./frontend
           docker build -t my-backend ./backend
 
-      - name: Log in to Docker Hub
+      - name: Log in to Docker Hubb
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
