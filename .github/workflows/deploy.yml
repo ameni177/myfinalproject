@@ -79,12 +79,12 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_KEY}}" > ~/.ssh/meinPrivateKey
           chmod 600 ~/.ssh/meinPrivateKey
-          ssh-keyscan -H $EC2_IP >> ~/.ssh/known_hosts
+          
 
 
           # SSH into the EC2 instance and deploy Docker containers
         
-          ssh -i  ~/.ssh/meinPrivateKey ubuntu@$EC2_IP << 'ENDSSH'
+          ssh -i  ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ubuntu@$EC2_IP << 'ENDSSH'
             docker pull ameni1717/my-frontend:latest
             docker pull ameni1717/my-backend:latest
             docker run -d -p 80:80 --name frontend my-frontend

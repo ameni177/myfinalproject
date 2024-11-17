@@ -7,15 +7,15 @@ resource "aws_instance" "web8" {
   instance_type = "t2.micro"
   key_name      = "testec2"
 
-  security_groups = [aws_security_group.web_sg12.name]
+  security_groups = [aws_security_group.web_sg13.name]
 
   tags = {
     Name = "web-server8"
   }
 }
 
-resource "aws_security_group" "web_sg12" {
-  name        = "web-sg12"
+resource "aws_security_group" "web_sg13" {
+  name        = "web-sg13"
   description = "Allow inbound traffic to EC2 instance"
 
   ingress {
