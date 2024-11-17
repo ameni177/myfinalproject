@@ -17,7 +17,7 @@ function App() {
   const fetchData = async (id) => {
     try {
       // Use EC2 IP if available, otherwise fallback to localhost
-      const backendUrl = ec2Ip ? `http://${ec2Ip}:5000/api/data/${id}` : `http://localhost:3001/api/data/${id}`;
+      const backendUrl = ec2Ip ? `http://${ec2Ip}:3001/api/data/${id}` : `http://localhost:3001/api/data/${id}`;
       const res = await fetch(backendUrl);
       const data = await res.json();
       setData(data); // Assuming the backend returns an array of data
