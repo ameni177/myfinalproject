@@ -2,20 +2,20 @@ provider "aws" {
   region = "eu-central-1"  # Choose your region
 }
 
-resource "aws_instance" "web4" {
+resource "aws_instance" "web5" {
   ami           = "ami-0084a47cc718c111a"  # Example AMI for Ubuntu; update based on region
   instance_type = "t2.micro"
   key_name      = "NEW"
 
-  security_groups = [aws_security_group.web_sg4.name]
+  security_groups = [aws_security_group.web_sg5.name]
 
   tags = {
-    Name = "web-server3"
+    Name = "web-server5"
   }
 }
 
-resource "aws_security_group" "web_sg4" {
-  name        = "web-sg4"
+resource "aws_security_group" "web_sg5" {
+  name        = "web-sg5"
   description = "Allow inbound traffic to EC2 instance"
 
   ingress {
@@ -49,5 +49,5 @@ resource "aws_security_group" "web_sg4" {
 
 output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"
-  value       = aws_instance.web4.public_ip
+  value       = aws_instance.web5.public_ip
 }
