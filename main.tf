@@ -14,8 +14,8 @@ resource "aws_instance" "web8" {
   }
 }
 
-resource "aws_security_group" "web_sg8" {
-  name        = "web-sg8"
+resource "aws_security_group" "web_sg2" {
+  name        = "web-sg2"
   description = "Allow inbound traffic to EC2 instance"
 
   ingress {

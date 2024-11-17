@@ -81,7 +81,7 @@ jobs:
 
           # SSH into the EC2 instance and deploy Docker containers
           EC2_IP=$(terraform output -raw ec2_public_ip)
-          ssh -o StrictHostKeyChecking=no ec2-user@$EC2_IP << 'EOF'
+          ssh -i ~/.ssh/id_rsa StrictHostKeyChecking=no ec2-user@$EC2_IP << 'EOF'
             docker pull ameni1717/my-frontend:latest
             docker pull ameni1717/my-backend:latest
             docker run -d -p 80:80 --name frontend my-frontend
