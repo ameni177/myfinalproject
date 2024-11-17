@@ -50,7 +50,9 @@ jobs:
 
       # Set environment variable for EC2 IP in frontend's .env
       - name: Set environment variable for EC2 IP
-        run: echo "REACT_APP_EC2_IP=${{ env.EC2_IP }}" >> frontend/.env
+        run:   
+          EC2_IP=$(terraform output -raw ec2_public_ip)
+          echo "EC2_IP=${EC2_IP}" >> $GITHUB_ENV
 
       - name: Build Docker images
         run: |
