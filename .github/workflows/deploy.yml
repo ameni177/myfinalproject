@@ -42,9 +42,7 @@ jobs:
       - name: Terraform apply
         run: terraform apply -auto-approve
 
-      - name: Get EC2 public IP
-        id: ec2_ip
-        run: echo "EC2_IP=$(terraform output -raw ec2_public_ip)" >> $GITHUB_ENV
+ 
 
       # Set environment variable for EC2 IP in frontend's .env
       - name: Set environment variable for EC2 IP
