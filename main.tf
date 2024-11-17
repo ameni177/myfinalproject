@@ -7,7 +7,7 @@ resource "aws_instance" "web8" {
   instance_type = "t2.micro"
   key_name      = "NEW"
 
-  security_groups = [aws_security_group.web_sg8.name]
+  security_groups = [aws_security_group.web_sg2.name]
 
   tags = {
     Name = "web-server8"
