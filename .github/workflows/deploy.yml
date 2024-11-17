@@ -37,9 +37,8 @@ jobs:
 
       - name: Terraform init
         run: terraform init
-
-      - name: Terraform plan
-        run: terraform plan
+      - name: Terraform destroy
+        run: terraform destroy
 
       - name: Terraform apply
         run: terraform apply -auto-approve
@@ -52,8 +51,7 @@ jobs:
       - name: Set environment variable for EC2 IP
         run:   
           EC2_IP=$(terraform output -raw ec2_public_ip)
-          echo "$EC2_IP"
-          echo "EC2_IP=${EC2_IP}" >> $GITHUB_ENV
+          echo "EC2_IP=${EC2_IP}" >> frontend/env
 
       - name: Build Docker images
         run: |
@@ -81,7 +79,8 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
           # SSH into the EC2 instance and deploy Docker containers
-          ssh -o StrictHostKeyChecking=no ec2-user@${{ env.EC2_IP }} << 'EOF'
+          cd frontend &&
+          ssh -o StrictHostKeyChecking=no ec2-user@process.env.EC2_IP << 'EOF'
             docker pull my-frontend
             docker pull my-backend
             docker run -d -p 80:80 --name frontend my-frontend
