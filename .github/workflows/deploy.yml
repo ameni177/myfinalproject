@@ -52,8 +52,8 @@ jobs:
 
       - name: Build Docker images
         run: |
-          docker build -t -f frontend/Dockerfile.frontend my-frontend  frontend
-          docker build -t -f backend/Dockerfile.backend my-backend  backend
+          docker build -t my-frontend -f frontend/Dockerfile.frontend frontend
+          docker build -t my-backend -f backend/Dockerfile.backend backend
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
