@@ -76,9 +76,9 @@ jobs:
           # SSH into the EC2 instance and deploy Docker containers
         
           ssh -i  ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ubuntu@18.199.237.221 << 'ENDSSH'
-            sudo yum update -y
-            sudo yum upgrade -y
-            sudo yum install docker -y
+            sudo apt update -y
+            sudo apt upgrade -y
+            sudo apt install docker -y
             sudo systemctl enable docker.service
             sudo systemctl start docker
             sudo usermod -aG docker ubuntu
