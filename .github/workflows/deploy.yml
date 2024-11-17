@@ -63,8 +63,10 @@ jobs:
 
       - name: Push Docker images
         run: |
-          docker push my-frontend
-          docker push my-backend
+          docker tag my-frontend ameni1717/my-frontend:latest
+          docker tag my-backend ameni1717/my-backend:latest
+          docker push ameni1717/my-frontend:latest
+          docker push ameni1717/my-backend:latest
 
       - name: Deploy to EC2 via SSH
         env:
@@ -78,8 +80,8 @@ jobs:
           # SSH into the EC2 instance and deploy Docker containers
           EC2_IP=$(terraform output -raw ec2_public_ip)
           ssh -o StrictHostKeyChecking=no ec2-user@$EC2_IP << 'EOF'
-            docker pull my-frontend
-            docker pull my-backend
+            docker pull ameni1717/my-frontend:latest
+            docker pull ameni1717/my-backend:latest
             docker run -d -p 80:80 --name frontend my-frontend
             docker run -d -p 3001:3001 --name backend my-backend
           EOF
