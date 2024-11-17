@@ -2,20 +2,9 @@ provider "aws" {
   region = "eu-central-1"  # Choose your region
 }
 
-resource "aws_instance" "web8" {
-  ami           = "ami-0084a47cc718c111a"  # Example AMI for Ubuntu; update based on region
-  instance_type = "t2.micro"
-  key_name      = "testec2"
 
-  security_groups = [aws_security_group.web_sg13.name]
-
-  tags = {
-    Name = "web-server8"
-  }
-}
-
-resource "aws_security_group" "web_sg13" {
-  name        = "web-sg13"
+resource "aws_security_group" "web_sg14" {
+  name        = "web-sg14"
   description = "Allow inbound traffic to EC2 instance"
 
   ingress {
@@ -47,7 +36,3 @@ resource "aws_security_group" "web_sg13" {
   }
 }
 
-output "ec2_public_ip" {
-  description = "The public IP address of the EC2 instance"
-  value       = aws_instance.web8.public_ip
-}
