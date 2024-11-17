@@ -82,7 +82,7 @@ jobs:
 
           # SSH into the EC2 instance and deploy Docker containers
         
-          ssh -i -i ~/.ssh/meinPrivateKey ec2-user@$EC2_IP << 'ENDSSH'
+          ssh -i  ~/.ssh/meinPrivateKey ec2-user@$EC2_IP << 'ENDSSH'
             docker pull ameni1717/my-frontend:latest
             docker pull ameni1717/my-backend:latest
             docker run -d -p 80:80 --name frontend my-frontend
