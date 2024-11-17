@@ -74,6 +74,7 @@ jobs:
         run: |
           # Set up SSH
           EC2_IP=$(terraform output -raw ec2_public_ip)
+          echo $EC2_IP
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_KEY}}" > ~/.ssh/meinPrivateKey
           chmod 600 ~/.ssh/meinPrivateKey
