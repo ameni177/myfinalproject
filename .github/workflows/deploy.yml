@@ -82,8 +82,8 @@ jobs:
             sudo systemctl enable docker.service
             sudo systemctl start docker
             sudo usermod -aG docker ec2-user
-            docker pull ameni1717/my-frontend:latest
-            docker pull ameni1717/my-backend:latest
-            docker run -d -p 80:80 --name frontend my-frontend
-            docker run -d -p 3001:3001 --name backend my-backend
+            sudo docker pull ameni1717/my-frontend:latest
+            sudo docker pull ameni1717/my-backend:latest
+            sudo docker run -d -p 80:80 --name frontend my-frontend
+            sudo docker run -d -p 3001:3001 --name backend my-backend
           ENDSSH
