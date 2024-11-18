@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 
-resource "aws_security_group" "web_sg2" {
-  name        = "web-sg2"
+resource "aws_security_group" "web_sg1" {
+  name        = "web-sg1"
   description = "Allow inbound traffic to EC2 instance"
 
   ingress {
@@ -36,3 +36,20 @@ resource "aws_security_group" "web_sg2" {
   }
 }
 
+# EC2 Instance definition
+resource "aws_instance" "amazon_linux_instance" {
+  ami             = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 AMI ID for eu-central-1 region (verify the latest version)
+  instance_type   = "t2.micro"  # You can adjust the instance type based on your needs
+  key_name        = "testec2"  # Replace with your key pair name
+  security_groups = [aws_security_group.web_sg1.name]
+
+  tags = {
+    Name = "AmazonLinuxInstance"
+  }
+}
+
+# Output the public IP of the EC2 instance
+output "instance_public_ip" {
+  value = aws_instance.amazon_linux_instance.public_ip
+  description = "The public IP address of the EC2 instance"
+}
