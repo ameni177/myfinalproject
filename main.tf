@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 
-resource "aws_security_group" "web_sg28" {
-  name        = "web-sg28"
+resource "aws_security_group" "web_sg29" {
+  name        = "web-sg29"
   description = "Allow inbound traffic to EC2 instance"
 
   ingress {
