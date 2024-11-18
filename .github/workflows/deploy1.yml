@@ -75,9 +75,10 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/meinPrivateKey
           chmod 600 ~/.ssh/meinPrivateKey
+          EC2_IP="${{ steps.ec2_ip.outputs.ec2_ip }}"
 
           # SSH into the EC2 instance and deploy Docker containers
-          ssh -i ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ec2-user@${{ steps.ec2_ip.outputs.ec2_ip }} << 'ENDSSH'
+          ssh -i ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ec2-user@$EC2_IP << 'ENDSSH'
             sudo yum update -y
             sudo yum upgrade -y
             sudo yum install docker -y
