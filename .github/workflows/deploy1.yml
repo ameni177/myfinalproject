@@ -45,7 +45,8 @@ jobs:
         id: ec2_ip
         run: |
           
-          EC2_IP=$(terraform output instance_public_ip)
+          export EC2_IP=$(terraform output instance_public_ip)
+        
          
           
       # Update .env file with EC2 IP from Terraform output
@@ -81,7 +82,7 @@ jobs:
           
 
           # SSH into the EC2 instance and deploy Docker containers
-          ssh -tt -i ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ec2-user@"$EC2_IP" << 'ENDSSH'
+          ssh -tt -i ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ec2-user@$EC2_IP << 'ENDSSH'
             sudo yum update -y
             sudo yum upgrade -y
             sudo yum install docker -y
