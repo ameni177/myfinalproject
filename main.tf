@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 
-resource "aws_security_group" "web_sg1" {
-  name        = "web-sg1"
+resource "aws_security_group" "web_sg111" {
+  name        = "web-sg11"
   description = "Allow inbound traffic to EC2 instance"
 
   ingress {
@@ -38,10 +38,10 @@ resource "aws_security_group" "web_sg1" {
 
 # EC2 Instance definition
 resource "aws_instance" "amazon_linux_instance" {
-  ami             = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 AMI ID for eu-central-1 region (verify the latest version)
+  ami             = "ami-017095afb82994ac7"  # Amazon Linux 2 AMI ID for eu-central-1 region (verify the latest version)
   instance_type   = "t2.micro"  # You can adjust the instance type based on your needs
   key_name        = "testec2"  # Replace with your key pair name
-  security_groups = [aws_security_group.web_sg1.name]
+  security_groups = [aws_security_group.web_sg111.name]
 
   tags = {
     Name = "AmazonLinuxInstance"
