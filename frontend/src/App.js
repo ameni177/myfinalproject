@@ -12,8 +12,7 @@ function App() {
     setEc2Ip(ip);
   }, []);
 
-/*************  ✨ Codeium Command ⭐  *************/
-/******  2ec13a26-e13f-47e9-bdf3-408a7d9328d4  *******/
+
   const fetchData = async (id) => {
     try {
       // Use EC2 IP if available, otherwise fallback to localhost
