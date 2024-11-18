@@ -78,8 +78,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/meinPrivateKey
           chmod 600 ~/.ssh/meinPrivateKey
-          EC2_IP="${{ env.EC2_IP }}"
-          echo "EC2 IP is: $EC2_IP"
+       
 
           # SSH into the EC2 instance and deploy Docker containers
           ssh -i ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ec2-user@$EC2_IP << 'ENDSSH'
