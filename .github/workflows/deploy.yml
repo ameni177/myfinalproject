@@ -71,7 +71,7 @@ jobs:
           chmod 600 ~/.ssh/meinPrivateKey
 
           # SSH into the EC2 instance and deploy Docker containers
-          ssh -i ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ec2-user@18.184.113.85 << 'ENDSSH'
+          ssh -i ~/.ssh/meinPrivateKey -o StrictHostKeyChecking=no ec2-user@${{ secrets.REACT_APP_EC2_IP }} << 'ENDSSH'
             sudo yum update -y
             sudo yum upgrade -y
             sudo yum install docker -y
